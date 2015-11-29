@@ -6,6 +6,7 @@ kivy.require('1.7.0')
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.anchorlayout import AnchorLayout
+from kivy.interactive import InteractiveLauncher
 
 Builder.load_file('toolbox.kv')
 Builder.load_file('drawingspace.kv')
@@ -18,6 +19,7 @@ class ComicCreator(AnchorLayout):
 
 class ComicCreatorApp(App):
     def build(self):
+        self.title = 'My Comic Creator'
         return ComicCreator()
 
 if __name__ == '__main__':
