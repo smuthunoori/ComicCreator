@@ -1,6 +1,7 @@
 #: kivy 1.7.0
+#:import toolbox toolbox
 
-<ToolButton@ToggleButton>:
+<ToolButton>:
     size_hint: None, None
     size: 48, 48
     group: 'tool'
@@ -11,18 +12,26 @@
     canvas.after:
         PopMatrix
 
+
 <ToolBox@GridLayout>:
     cols: 2
     padding: 2
-    ToolButton:
+    tool_stickman: _tool_stickman
+    tool_circle: _tool_circle
+    tool_line: _tool_line
+
+    ToolCircle:
+        id: _tool_circle
         canvas:
             Line:
                 circle: 24, 24, 14
-    ToolButton:
+    ToolLine:
+        id: _tool_line
         canvas:
             Line:
                 points: 10,10, 38,38
 
-    ToolButton:
+    ToolStickMan:
+        id: _tool_stickman
         StickMan:
             pos_hint: {'center_x':.5,'center_y':.5}
