@@ -32,7 +32,9 @@ class DraggableWidget(RelativeLayout):
 
         if self.selected and self.touched and self.parent.collide_point(x-self.width/2, y-self.height/2):
 
-            self.translate(touch.x-self.ix, touch.y-self.iy)
+            #self.translate(touch.x-self.ix, touch.y-self.iy)
+            go = self.parent.general_options
+            go.translation = (touch.x-self.ix, touch.y-self.iy)
 
             return True
 
@@ -41,7 +43,8 @@ class DraggableWidget(RelativeLayout):
     def on_touch_up(self, touch):
         self.touched = False
         if self.selected:
-            self.unselect()
+            if not self.parent.general_options.group_mode:
+                self.unselect()
             return True
 
         return super(DraggableWidget, self).on_touch_up(touch)
